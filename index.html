@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saty Shivansh | Portfolio</title>
+
+  <style>
+    /* ==== RESET ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #050816;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==== LAYOUT ==== */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ==== NAVBAR ==== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(5, 8, 22, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(249, 115, 22, 0.15);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .nav-left span {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f97316;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-right a {
+      position: relative;
+    }
+
+    .nav-right a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #f97316, #22c55e);
+      transition: width 0.2s ease;
+    }
+
+    .nav-right a:hover::after {
+      width: 100%;
+    }
+
+    /* ==== SECTIONS GLOBAL ==== */
+    section {
+      padding: 4rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(circle at top, rgba(249, 115, 22, 0.06), transparent 60%);
+    }
+
+    section:nth-of-type(odd) {
+      background: radial-gradient(circle at bottom, rgba(56, 189, 248, 0.08), transparent 60%);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #9ca3af;
+      margin-bottom: 2rem;
+    }
+
+    /* ==== HERO ==== */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      margin-bottom: 1rem;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #f97316, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtext {
+      max-width: 30rem;
+      color: #d1d5db;
+      font-size: 0.98rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: #f97316;
+      color: #0b1120;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-right {
+      justify-self: center;
+    }
+
+    .hero-card {
+  width: 260px;
+  height: 260px;
+  border-radius: 30px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), #020617 70%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+    }
+
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 999px;
+      border: 3px solid rgba(15, 23, 42, 0.8);
+      background: linear-gradient(135deg, #f97316, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #0b1120;
+    }
+
+    .hero-pill {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: #e5e7eb;
+
+
+}
+
+    
+
+    /* ==== ABOUT ==== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: #d1d5db;
+      margin-bottom: 1rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .about-list li {
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .about-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ==== SKILLS ==== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.9rem;
+    }
+
+    .skill-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tags {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* ==== PROJECTS ==== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .project-description {
+      font-size: 0.88rem;
+      color: #d1d5db;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .project-links {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .project-links a {
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.7);
+    }
+
+    /* ==== CONTACT ==== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+    }
+
+    .contact-text {
+      font-size: 0.96rem;
+      color: #d1d5db;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .contact-info div {
+      margin-bottom: 0.3rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #f97316;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 1rem 0;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ==== RESPONSIVE ==== */
+    @media (max-width: 850px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero {
+        padding-top: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-right {
+        display: none; /* simple: hide menu on small screens */
+      }
+
+      .hero-card {
+        width: 220px;
+        height: 220px;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==== NAVBAR ==== -->
+  <header>
+    <div class="container nav">
+      <div class="nav-left">
+        <!-- Replace "YS" with your initials -->
+        <span>Saty Shivansh• Portfolio</span>
+      </div>
+      <nav class="nav-right">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==== HERO SECTION ==== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>Open to internships & projects</span>
+        </div>
+
+        <h1>
+          Hi, I'm <span>Saty Shivansh</span><br />
+          a Passionate Developer & Learner
+        </h1>
+
+        <p class="hero-subtext">
+          I’m a Computer Science student who loves building real-world projects,
+          exploring Python, machine learning, and creating clean, user-friendly web experiences.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn">View my projects</a>
+          <a href="#contact" class="btn btn-outline">Contact me</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <!-- Circular avatar (you can replace with your photo later) -->
+          <div class="hero-avatar">
+            <div class="hero-avatar">
+  <img src="me.jpg" alt="My Photo" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+</div>
+
+          </div>
+          <div class="hero-pill">
+            🌱 Currently learning: Python, C, Web Dev
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== ABOUT SECTION ==== -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Who I am</p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm <strong>Saty Shivansh</strong>, a Computer Science diploma student at
+            <strong>Government Polytechnic College</strong>. I enjoy learning how things work behind the scenes,
+            especially in programming, problem solving, and building websites.
+          </p>
+          <p>
+            My goal is to become strong in <strong>Python, Machine Learning, and Deep Learning</strong>,
+            and work on impactful projects that solve real-world problems.
+          </p>
+
+          <ul class="about-list">
+            <li>🎓 Diploma in Computer Science — Year of passing: 2027</li>
+            <li>📍 Based in: Budaun, India</li>
+            <li>📌 Interests: Web development, AI/ML, startups, problem solving</li>
+          </ul>
+        </div>
+
+        <div>
+          <p style="font-size:0.9rem; color:#9ca3af; margin-bottom:0.5rem;">What I’m focusing on right now:</p>
+          <span class="about-badge">Learning C & DSA basics</span>
+          <span class="about-badge">Mastering Python</span>
+          <span class="about-badge">Building small projects</span>
+          <span class="about-badge">Improving problem solving</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== SKILLS SECTION ==== -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">Tools I work with</p>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Programming</h3>
+          <p class="skill-tags">Python (core), C (basics), JavaScript (basics)</p>
+        </div>
+        <div class="skill-card">
+          <h3>Web</h3>
+          <p class="skill-tags">HTML, CSS, basic responsive design</p>
+        </div>
+        <div class="skill-card">
+          <h3>Concepts</h3>
+          <p class="skill-tags">Problem solving, OOP basics, DBMS (SQL)</p>
+        </div>
+        <div class="skill-card">
+          <h3>Tools</h3>
+          <p class="skill-tags">VS Code, Git & GitHub (basics)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== PROJECTS SECTION ==== -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">Things I've built</p>
+
+      <div class="projects-grid">
+        <!-- PROJECT 1 -->
+        <article class="project-card">
+          <div class="project-title">Photography Portfolio Website</div>
+          <div class="project-description">
+            A responsive website built with HTML & CSS to showcase photography work,
+            including sections like weddings, events, and gallery.
+          </div>
+          <div class="project-meta">
+            Tech: HTML, CSS • Role: Solo
+          </div>
+          
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="project-card">
+          <div class="project-title">Student Management SQL Project</div>
+          <div class="project-description">
+            Worked with multiple SQL tables (students, employees, products, etc.)
+            and wrote queries for real-world style problems.
+          </div>
+          <div class="project-meta">
+            Tech: MySQL • Focus: Joins, Aggregations
+          </div>
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="project-card">
+          <div class="project-title">Furniture Store Management System</div>
+          <div class="project-description">
+           A full-stack web-based Furniture Store Management System built using Python (Django).
+Is system ka main purpose furniture shop ke products, categories, customers, orders, inventory, billing aur admin operations ko automate karna hai.
+Admin dashboard ke through shop owner easily stock manage kar sakta hai, new furniture add kar sakta hai, order dekh sakta hai aur customer details track kar sakta hai.
+          </div>
+          <div class="project-meta">
+            Tech: Frontend: HTML, CSS, Bootstrap Backend: Python (Django Framework) Database: SQLite
+
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== CONTACT SECTION ==== -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Let's connect</p>
+
+      <div class="contact-grid">
+        <div>
+          <p class="contact-text">
+            Whether you’re looking for a motivated intern, a project collaborator, or just
+            want to discuss ideas around tech, startups, or AI — feel free to reach out.
+          </p>
+
+          <div class="contact-info">
+            <div>📧 Email: <strong>satyshivansh39@gmail.com</strong></div>
+            <div>📱 Phone: <strong>+91-9458509700</strong></div>
+            <div>🌐 GitHub: <strong>https://github.com/satyshivansh24-wq/redesigned-engine</strong></div>
+            <div>🔗 LinkedIn: <strong>https://www.linkedin.com/in/saty-shivansh-518869335/?originalSubdomain=in</strong></div>
+          </div>
+        </div>
+
+        <!-- This form won't send emails directly (needs backend or service like Formspree) -->
+        <form>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Write your message here..."></textarea>
+          </div>
+          <button type="button" class="btn" onclick="alert('This is a demo form. Connect it to a backend to receive messages.')">
+            Send message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==== FOOTER ==== -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Saty Shivansh. All rights reserved.</div>
+      <div>Built with ❤️ using HTML & CSS. By Saty Shivansh.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
